@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/02 23:00:44 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/02 23:23:56 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ int main(int ac, char *av[])
     while(i < n_philos)
     {
         pthread_create(&philo[i], NULL, philos, NULL);
+        i++;
+    }
+    i = 0;
+    while(i < n_philos)
+    {
         pthread_join(philo[i], NULL);
         i++;
     }
-
     return 0;
 }
