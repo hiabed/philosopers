@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/02 23:23:56 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:12:31 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ void *philos()
 
 int main(int ac, char *av[])
 {
-    if(ac < 4)
+    if(ac < 5 || ac > 6)
     {
-        write(2, "you should enter exactly 4 or 5 arguments\n", 42);
+        write(2, "you should enter 4 or 5 arguments\n", 42);
         exit(EXIT_FAILURE);
     }
     int n_philos = ft_atoi(av[1]);
+    int t_die = ft_atoi(av[2]);
+    int t_eat = ft_atoi(av[3]);
+    int t_sleep = ft_atoi(av[4]);
+    if(ac == 6)
+    {
+        int n_times_eat = ft_atoi(av[5]);
+    }
     int n_forks = n_philos;
     int i = 0;
     pthread_t philo[n_philos];

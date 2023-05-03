@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:50:00 by mhassani          #+#    #+#             */
-/*   Updated: 2023/04/13 00:39:09 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:14:26 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void *increment(void *arg) {
     
     t_mutex* m;
     m = (t_mutex *)arg;
+    printf("1: %p\n", &m->count);
     while(i < 1000000)
     {
         pthread_mutex_lock(&(m->mutex));
@@ -53,10 +54,11 @@ int main()
     pthread_t t1, t2;
     t_mutex m;
     m.count = 0;
+    printf("2: %p\n", &m.count);
     pthread_mutex_init(&(m.mutex), NULL);
     pthread_create(&t1, NULL, increment, &m);
     pthread_create(&t2, NULL, increment, &m);
-    
+
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
 
