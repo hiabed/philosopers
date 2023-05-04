@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:50:00 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/03 18:14:26 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/03 23:04:09 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@
 //     pthread_create(&thread_1, NULL, philo, NULL);
 //     pthread_join(thread_1, NULL);
 // }
-
-typedef struct mutex
-{
-    pthread_mutex_t mutex;
-    int count;
-} t_mutex;
 
 void *increment(void *arg) {
     int i = 0;
