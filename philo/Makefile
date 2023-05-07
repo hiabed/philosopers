@@ -4,7 +4,7 @@ CFILES = philosophers.c ft_atoi.c
 
 OBJ = ${CFILES:.c=.o}
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 CC = cc
 
