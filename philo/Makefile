@@ -1,6 +1,6 @@
 NAME = philo
 
-CFILES = philosophers.c ft_atoi.c mutexes.c time.c
+CFILES = philosophers.c ft_atoi.c mutexes.c time.c is_digit.c
 
 OBJ = ${CFILES:.c=.o}
 
