@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/10 22:55:39 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/10 22:56:48 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,11 @@ void	get_args(t_data *data,int ac,  char **av)
 	data->n_times_eat = -1;
 	if (ac == 6)
 		data->n_times_eat = ft_atoi(av[5]);
+	if (data->n_philos < 1)
+	{
+		write(2, "there is no philosopher at the table\n", 37);
+		return 0;
+	}
 }
 
 int	main(int ac, char **av)
@@ -120,11 +125,6 @@ int	main(int ac, char **av)
 		return 0;
 	data = malloc(sizeof(t_data));
 	get_args(data, ac, av);
-	if (data->n_philos < 1)
-	{
-		write(2, "there is no philosopher at the table\n", 37);
-		return 0;
-	}
 	philo_info(data);
 	init_mutexes(data);
 	creat_philos(data);
