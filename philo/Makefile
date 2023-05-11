@@ -1,11 +1,10 @@
 NAME = philo
 
-CFILES = philosophers.c ft_atoi.c mutexes.c time.c is_digit.c
+CFILES = philosophers.c mutexes.c time.c is_digit.c
 
 OBJ = ${CFILES:.c=.o}
 
-FLAGS = -Wall -Wextra -Werror
-
+FLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3 
 CC = cc
 
 all : ${NAME}
