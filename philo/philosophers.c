@@ -6,42 +6,11 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 13:25:57 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:27:12 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	is_num(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (!ft_isdigit(s[i]))
-		{
-			write(2, "Please enter only numbers\n", 26);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	args_is_num(char **av)
-{
-	int	j;
-
-	j = 1;
-	while (av[j])
-	{
-		if (!is_num(av[j]))
-			return (0);
-		j++;
-	}
-	return (1);
-}
 
 void	philo_info(t_data *data)
 {
