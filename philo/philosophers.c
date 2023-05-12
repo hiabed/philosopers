@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 23:12:31 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:44:43 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	get_args(t_data *data, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	int		i;
 	t_data	*data;
 
 	if (ac < 5 || ac > 6)

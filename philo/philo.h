@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:21:05 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 17:37:48 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:25:39 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 	unsigned long	first_time;
 	int				t_eat;
 	int				t_sleep;
-	int				t_die;
+	unsigned long	t_die;
 	int				n_times_eat;
 	int				n_philos;
 	pthread_t		*philo;
