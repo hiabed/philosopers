@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:26:21 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/12 16:47:11 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:56:58 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_num(char *s)
 	{
 		if (!ft_isdigit(s[i]))
 		{
-			write(2, "Please enter only numbers\n", 26);
+			write(2, "Please enter only valid numbers\n", 32);
 			return (0);
 		}
 		i++;
@@ -43,6 +43,16 @@ int	args_is_num(char **av)
 	j = 1;
 	while (av[j])
 	{
+		if (ft_atoi(av[j]) == 1)
+		{
+			write(2, "Please enter only positive numbers\n", 35);
+			return (0);
+		}
+		if (ft_atoi(av[j]) == 0)
+		{
+			write(2, "Please enter only numbers less than max int\n", 44);
+			return (0);
+		}
 		if (!is_num(av[j]))
 			return (0);
 		j++;
@@ -61,11 +71,8 @@ int	ft_atoi(const char *str)
 		|| str[i] == '\n' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
-	{
-		write(2, "enter only positive numbers\n", 28);
-		return 0;
-	}
-	else if (str[i] == '+')
+		return (1);
+	if (str[i] == '+')
 		i++;
 	while (str[i] >= 48 && str[i] <= 57 && result <= INT32_MAX)
 	{
@@ -73,6 +80,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (result > INT32_MAX)
-		return 0;
+		return (0);
 	return (result);
 }
