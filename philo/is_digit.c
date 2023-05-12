@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:26:21 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 17:35:56 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:47:11 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ int	args_is_num(char **av)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int				i;
+	unsigned long	result;
 
 	i = 0;
 	result = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
-		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f' || str[i] == '\r'
+		|| str[i] == '\n' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
 	{
-		sign = -1;
-		i++;
+		write(2, "enter only positive numbers\n", 28);
+		return 0;
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= 48 && str[i] <= 57 && result <= INT32_MAX)
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	return (sign * result);
+	if (result > INT32_MAX)
+		return 0;
+	return (result);
 }

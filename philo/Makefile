@@ -4,7 +4,7 @@ CFILES = philosophers.c mutexes.c time.c is_digit.c
 
 OBJ = ${CFILES:.c=.o}
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3 
+FLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 CC = cc
 
 all : ${NAME}

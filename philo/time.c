@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:11:44 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/10 20:20:49 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:12:52 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	ft_end(t_data *data)
 	while (1)
 	{
 		if (!check_death(data->ph))
-		{
 			break ;
-		}
 	}
 }
