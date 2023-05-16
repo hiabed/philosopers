@@ -4,14 +4,13 @@ CFILES = philosophers.c mutexes.c time.c is_digit.c
 
 OBJ = ${CFILES:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
-
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 CC = cc
 
 all : ${NAME}
 
 ${NAME} : ${OBJ}
-	${CC} ${OBJ} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
 clean :
 	${RM} ${OBJ}

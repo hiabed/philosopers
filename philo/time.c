@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:11:44 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 23:12:52 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:43:06 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ unsigned long	timee(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-void	ft_usleep(unsigned int t)
+void	ft_usleep(unsigned long t)
 {
-	long int	time;
+	unsigned long	time;
 
 	time = timee();
 	while (timee() - time < t)
@@ -33,25 +33,26 @@ int	check_death(t_philo *ph)
 {
 	int	i;
 
-	while (1)
-	{
 		i = 0;
+		pthread_mutex_lock(&ph->data->mutex2);
+		if (ph->data->n_times_eat != -1 && ph->data->n_philos
+			* ph->data->n_times_eat == ph->data->eating)
+			return (0);
+		pthread_mutex_unlock(&ph->data->mutex2);
 		while (i < ph->data->n_philos)
 		{
 			pthread_mutex_lock(&ph->data->mutex);
 			if (timee() - ph[i].last_meal >= ph->data->t_die)
 			{
 				pthread_mutex_lock(&ph->data->print);
-				if (ph->data->n_times_eat == -1)
-					printf("%lu %d  died\n", timee() - ph->data->first_time,
-						ph[i].id);
+				printf("%lu %d  died\n", timee() - ph->data->first_time,
+					ph[i].id);
 				return (0);
 			}
 			pthread_mutex_unlock(&ph->data->mutex);
 			i++;
 		}
 		return (1);
-	}
 }
 
 void	ft_end(t_data *data)

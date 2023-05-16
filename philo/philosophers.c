@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:34:09 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/12 20:44:43 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:09:01 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	creat_philos(t_data *data)
 
 	i = 0;
 	data->philo = malloc(sizeof(pthread_t) * data->n_philos);
+	data->eating = 0;
 	while (i < data->n_philos)
 	{
 		data->ph[i].last_meal = timee();
@@ -92,11 +93,6 @@ int	main(int ac, char **av)
 		return (0);
 	data = malloc(sizeof(t_data));
 	get_args(data, ac, av);
-	if (data->n_philos < 1)
-	{
-		write(2, "there is no philosopher at the table\n", 37);
-		return (0);
-	}
 	philo_info(data);
 	init_mutexes(data);
 	creat_philos(data);

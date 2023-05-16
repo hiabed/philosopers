@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:10:24 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/11 23:12:43 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/15 22:55:50 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ void	init_mutexes(t_data *data)
 		pthread_mutex_init(&data->forks[i], NULL);
 		i++;
 	}
+	pthread_mutex_init(&data->mutex2, NULL);
 	pthread_mutex_init(&data->mutex, NULL);
 	pthread_mutex_init(&data->print, NULL);
 }
 
-void	mutexes(t_philo *ph)
+void	ft_eat(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->data->forks[ph->r_fork]);
 	pthread_mutex_lock(&ph->data->print);
@@ -46,6 +47,14 @@ void	mutexes(t_philo *ph)
 	ft_usleep(ph->data->t_eat);
 	pthread_mutex_unlock(&ph->data->forks[ph->l_fork]);
 	pthread_mutex_unlock(&ph->data->forks[ph->r_fork]);
+	pthread_mutex_lock(&ph->data->mutex2);
+	ph->data->eating++;
+	pthread_mutex_unlock(&ph->data->mutex2);
+}
+
+void	mutexes(t_philo *ph)
+{
+	ft_eat(ph);
 	pthread_mutex_lock(&ph->data->print);
 	printf("%lu %d is sleeping\n", timee() - ph->data->first_time, ph->id);
 	pthread_mutex_unlock(&ph->data->print);

@@ -6,7 +6,7 @@
 /*   By: mhassani <mhassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:21:05 by mhassani          #+#    #+#             */
-/*   Updated: 2023/05/12 20:25:39 by mhassani         ###   ########.fr       */
+/*   Updated: 2023/05/14 14:19:58 by mhassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,20 @@ typedef struct s_data
 	unsigned long	t_die;
 	int				n_times_eat;
 	int				n_philos;
+	int				eating;
 	pthread_t		*philo;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	print;
+	pthread_mutex_t	mutex2;
 }					t_data;
 
-int					ft_isdigit(int d);
-int					is_num(char *s);
 int					check_death(t_philo *ph);
 void				*ph_routine(void *arg);
 void				philo_info(t_data *ph);
 int					ft_atoi(const char *str);
 unsigned long		timee(void);
-void				ft_usleep(unsigned int t);
+void				ft_usleep(unsigned long t);
 void				ft_end(t_data *data);
 void				get_args(t_data *data, int ac, char **av);
 void				mutexes(t_philo *ph);
